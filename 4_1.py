@@ -24,7 +24,9 @@ def reshape(w, h):
     glMatrixMode(GL_PROJECTION)
 
     glLoadIdentity()
-    glOrtho(-10, 10, -10, 10, -10, 10)
+    #glOrtho(-10, 10, -10, 10, -10, 10)
+    gluPerspective(60, 1, 0, 20)
+    gluLookAt(0, 0, 10, 0, 0, 0, 0, 1, -1)
     glMatrixMode(GL_MODELVIEW)
     glLoadIdentity()
     glClearColor(1, 1, 1, 0)
@@ -56,6 +58,19 @@ def display():
 def processNormalKeys(key, x, y):
     if key == b'\x1b':
         return sys.exit(0)
+    elif key == b'+':
+        glMatrixMode(GL_MODELVIEW)
+        glScale(1.1, 1.1, 0)
+        display()
+    elif key == b'-':
+        glMatrixMode(GL_MODELVIEW)
+        glScale(0.9, 0.9, 0)
+        display()
+    elif key == b'\x7f':
+        glMatrixMode(GL_MODELVIEW)
+        glRotate(30.0, 0, 0, 1.0)
+        display()
+
 
 
 def processSpecialKeys(key, x, y):
@@ -78,7 +93,20 @@ def processSpecialKeys(key, x, y):
     elif GLUT_KEY_HOME == key:
         glMatrixMode(GL_MODELVIEW)
         glRotatef(30.0, 1.0, 0.0, 0)
-        display_all()
+        display()
+    elif GLUT_KEY_END == key:
+        glMatrixMode(GL_MODELVIEW)
+        glRotate(30.0, 0, 1.0, 0)
+        display()
+    elif GLUT_KEY_PAGE_UP:
+        glMatrixMode(GL_MODELVIEW)
+        glRotate(-30.0, 1.0, 1.0, 1.0)
+        display()
+    elif GLUT_KEY_PAGE_DOWN:
+        glMatrixMode(GL_MODELVIEW)
+        glRotate(30.0, 1.0, 1.0, 1.0)
+        display()
+
 
 
 main()
