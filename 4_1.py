@@ -24,7 +24,7 @@ def reshape(w, h):
     glMatrixMode(GL_PROJECTION)
 
     glLoadIdentity()
-    #glOrtho(-10, 10, -10, 10, -10, 10)
+    # glOrtho(-10, 10, -10, 10, -10, 10)
     gluPerspective(60, 1, 0, 20)
     gluLookAt(0, 0, 10, 0, 0, 0, 0, 1, -1)
     glMatrixMode(GL_MODELVIEW)
@@ -51,7 +51,8 @@ def display():
     glVertex3f(0.0, 0.0, 500)
     glEnd()
     glPopMatrix()
-    glutWireTeapot(5)
+    # glutWireTeapot(5)
+    glutSolidSphere(2, 10, 5)
     glutSwapBuffers()
 
 
@@ -70,7 +71,6 @@ def processNormalKeys(key, x, y):
         glMatrixMode(GL_MODELVIEW)
         glRotate(30.0, 0, 0, 1.0)
         display()
-
 
 
 def processSpecialKeys(key, x, y):
@@ -106,7 +106,6 @@ def processSpecialKeys(key, x, y):
         glMatrixMode(GL_MODELVIEW)
         glRotate(30.0, 1.0, 1.0, 1.0)
         display()
-
 
 
 main()
